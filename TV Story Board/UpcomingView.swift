@@ -1,5 +1,5 @@
 //
-//  UpcommingView.swift
+//  UpcomingView.swift
 //  TV Story Board
 //
 //  Created by Sayat Amanzhol on 24.09.2026.
@@ -7,29 +7,33 @@
 
 import SwiftUI
 
-struct UpcommingView: View {
+struct UpcomingView: View {
     let viewModel = ViewModel()
     
     var body: some View {
-        switch viewModel.upcommingStatus {
-        case .notStarted {
-            
+        NavigationStack {
+            GeometryReader { geo in
+                switch viewModel.upcomingStatus {
+                case .notStarted:
+                    EmptyView()
+                case .fetching:
+                    ProgressView()
+                        .frame(width: geo.size.width, height: geo.size.height)
+                case .success:
+                    VerticalListView(titles: viewModel.upcomingMovies, canDelete: false)
+                case .failed(let underlyingError):
+                    Text(underlyingError.localizedDescription)
+                        .errorMessage()
+                        .frame(width: geo.size.width, height: geo.size.height)
+                }
+            }
         }
-        case .fetching {
-            
+        .task {
+            await viewModel.getUpcomingMovies()
         }
-        case .success {
-            
-        }
-        case .failed {
-            
-        }
-        }
-        
-        VerticalListView(titles: viewModel.upcommingMovies)
     }
 }
 
 #Preview {
-    UpcommingView()
+    UpcomingView()
 }
