@@ -14,7 +14,7 @@ struct Constants {
     static let searchString = "Search"
     static let downloadString = "Download"
     static let playString = "Play"
-    static let trendingMoviewString = "Trending Movies"
+    static let trendingMoviesString = "Trending Movies"
     static let trendingTVString = "Trending TV"
     static let topRatedMovieString = "Top Rated Movies"
     static let topRatedTVString = "Top Rated TV"
@@ -34,12 +34,12 @@ struct Constants {
     static let testTitleURL2 = "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg"
     static let testTitleURL3 = "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
     
-    static let postureURLStart = "https://image.tmdb.org/t/p/w500"
+    static let posterURLStart = "https://image.tmdb.org/t/p/w500"
     
     static func addPosterPath(to titles: inout[Title]) {
         for index in titles.indices {
             if let path = titles[index].posterPath {
-                titles[index].posterPath = Constants.postureURLStart + path
+                titles[index].posterPath = Constants.posterURLStart + path
             }
         }
     }

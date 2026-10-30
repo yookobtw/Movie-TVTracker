@@ -34,7 +34,7 @@ enum NetworkError: Error, LocalizedError {
         case .badURLResponse(underlyingError: let error):
             return "Bad URL response: \(error.localizedDescription)."
         case .missingConfig:
-            return "Missing configuration."
+            return "Missing API configuration. Copy APIConfig.example.json to TV Story Board/APIConfig.json and add your keys."
         case .urlBuildFailed:
             return "Failed to build URL"
         }

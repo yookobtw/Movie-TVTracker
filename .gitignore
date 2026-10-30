@@ -1,0 +1,11 @@
+# Xcode
+xcuserdata/
+*.xcuserstate
+DerivedData/
+build/
+
+# macOS
+.DS_Store
+
+# Secrets — copy APIConfig.example.json to "TV Story Board/APIConfig.json"
+TV Story Board/APIConfig.json

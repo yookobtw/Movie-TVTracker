@@ -59,7 +59,7 @@ struct HomeView: View {
                                 }
                             }
                             
-                            HorizontalListView(header: Constants.trendingMoviewString, titles: viewModel.trendingMovies) { title in
+                            HorizontalListView(header: Constants.trendingMoviesString, titles: viewModel.trendingMovies) { title in
                                 titleDetailPath.append(title)
                             }
                             HorizontalListView(header: Constants.trendingTVString, titles: viewModel.trendingTV)  { title in

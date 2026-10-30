@@ -10,7 +10,7 @@ import Foundation
 struct DataFetcher {
     
     let tmdbBaseURL = APIConfig.shared?.tmdbBaseURL
-    let tmbdAPIKey = APIConfig.shared?.tmdbAPIKey
+    let tmdbAPIKey = APIConfig.shared?.tmdbAPIKey
     let youtubeSearchURL = APIConfig.shared?.youtubeSearchURL
     let youtubeAPIKey = APIConfig.shared?.youtubeAPIKey
     
@@ -27,7 +27,6 @@ struct DataFetcher {
             throw NetworkError.urlBuildFailed
         }
         
-        print(fetchTitlesURL)
         var titles = try await fetchAndDecode(url: fetchTitlesURL, type: TMDBAPIObject.self).results
         
         Constants.addPosterPath(to: &titles)
@@ -51,7 +50,6 @@ struct DataFetcher {
         ]) else {
             throw NetworkError.urlBuildFailed
         }
-        print(fetchVideoURL)
         
         return try await fetchAndDecode(url: fetchVideoURL, type: YoutubeSearchResponse.self).items?.first?.id.videoId ?? ""
     }
@@ -75,7 +73,7 @@ struct DataFetcher {
         guard let baseURL = tmdbBaseURL else{
             throw NetworkError.missingConfig
         }
-        guard let apiKey = tmbdAPIKey else{
+        guard let apiKey = tmdbAPIKey else{
             throw NetworkError.missingConfig
         }
         
